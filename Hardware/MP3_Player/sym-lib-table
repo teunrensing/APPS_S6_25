@@ -1,0 +1,6 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "DFR0768")(type "KiCad")(uri "C:/Users/caspe/Downloads/DFR0768-DFROBOT-Symbol-Kicad-563352/DFR0768.kicad_sym")(options "")(descr ""))
+  (lib (name "INMP")(type "KiCad")(uri "${KIPRJMOD}/INMP.kicad_sym")(options "")(descr ""))
+  (lib (name "INMP441")(type "KiCad")(uri "${KIPRJMOD}/INMP441.kicad_sym")(options "")(descr ""))
+)
