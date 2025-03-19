@@ -2643,7 +2643,7 @@
 	)
 	(wire
 		(pts
-			(xy 166.37 33.02) (xy 171.45 33.02)
+			(xy 166.37 35.56) (xy 171.45 35.56)
 		)
 		(stroke
 			(width 0)
@@ -3293,7 +3293,7 @@
 	)
 	(wire
 		(pts
-			(xy 166.37 30.48) (xy 171.45 30.48)
+			(xy 166.37 33.02) (xy 171.45 33.02)
 		)
 		(stroke
 			(width 0)
@@ -3373,7 +3373,7 @@
 	)
 	(wire
 		(pts
-			(xy 166.37 27.94) (xy 171.45 27.94)
+			(xy 166.37 30.48) (xy 171.45 30.48)
 		)
 		(stroke
 			(width 0)
@@ -3443,7 +3443,7 @@
 	)
 	(text "Programming\n"
 		(exclude_from_sim no)
-		(at 175.26 23.114 0)
+		(at 175.26 25.654 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4175,7 +4175,7 @@
 	)
 	(global_label "SWDIO"
 		(shape input)
-		(at 166.37 30.48 180)
+		(at 166.37 33.02 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4185,7 +4185,7 @@
 		)
 		(uuid "7a946942-ac48-40cf-bd70-6c4644537a2f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 157.5186 30.48 0)
+			(at 157.5186 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4769,7 +4769,7 @@
 	)
 	(global_label "NRST"
 		(shape input)
-		(at 166.37 33.02 180)
+		(at 166.37 35.56 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4779,7 +4779,7 @@
 		)
 		(uuid "d39e9e2e-9c85-4ec3-9851-515bfe96ab41")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 158.6072 33.02 0)
+			(at 158.6072 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5011,7 +5011,7 @@
 	)
 	(global_label "SWCLK"
 		(shape input)
-		(at 166.37 27.94 180)
+		(at 166.37 30.48 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5021,7 +5021,7 @@
 		)
 		(uuid "f11cf05d-490f-4f85-88ad-cc3015886dd3")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 157.1558 27.94 0)
+			(at 157.1558 30.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5165,7 +5165,7 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x03")
-		(at 176.53 30.48 0)
+		(at 176.53 33.02 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5174,15 +5174,6 @@
 		(fields_autoplaced yes)
 		(uuid "0534fdbe-34bb-44a1-8bdd-759353513cd0")
 		(property "Reference" "J9"
-			(at 179.07 29.2099 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Conn_01x03"
 			(at 179.07 31.7499 0)
 			(effects
 				(font
@@ -5191,8 +5182,17 @@
 				(justify left)
 			)
 		)
+		(property "Value" "Conn_01x03"
+			(at 179.07 34.2899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
 		(property "Footprint" ""
-			(at 176.53 30.48 0)
+			(at 176.53 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5201,7 +5201,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 176.53 30.48 0)
+			(at 176.53 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5210,7 +5210,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 176.53 30.48 0)
+			(at 176.53 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
