@@ -4481,7 +4481,7 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 29.21) (xy 123.19 29.21)
+			(xy 120.65 29.21) (xy 121.92 29.21)
 		)
 		(stroke
 			(width 0)
@@ -4818,16 +4818,6 @@
 			(type default)
 		)
 		(uuid "d87435a0-6db7-49e8-a85d-b8530e23ccaa")
-	)
-	(wire
-		(pts
-			(xy 128.27 29.21) (xy 129.54 29.21)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d96fac7a-d19a-43e2-9315-224c5e6f0c2e")
 	)
 	(wire
 		(pts
@@ -8293,7 +8283,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Connector_USB:USB_C_Receptacle_G-Switch_GT-USB-7010ASV"
+		(property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal"
 			(at 218.44 99.06 0)
 			(effects
 				(font
@@ -12369,7 +12359,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 123.19 29.21 270)
+		(at 121.92 29.21 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12378,7 +12368,7 @@
 		(fields_autoplaced yes)
 		(uuid "dc127454-d5b4-4696-b97c-b631c95cb7c1")
 		(property "Reference" "#PWR023"
-			(at 116.84 29.21 0)
+			(at 115.57 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12387,7 +12377,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 119.38 29.2099 90)
+			(at 118.11 29.2099 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12396,7 +12386,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 123.19 29.21 0)
+			(at 121.92 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12405,7 +12395,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 123.19 29.21 0)
+			(at 121.92 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12414,7 +12404,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 123.19 29.21 0)
+			(at 121.92 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13151,7 +13141,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 125.73 29.21 90)
+		(at 124.46 29.21 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -13159,7 +13149,7 @@
 		(dnp no)
 		(uuid "ef162b31-04ae-4fb1-ace1-2caa93ce025d")
 		(property "Reference" "C1"
-			(at 125.73 24.892 90)
+			(at 124.46 24.892 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13167,7 +13157,7 @@
 			)
 		)
 		(property "Value" "100n"
-			(at 125.984 32.766 90)
+			(at 124.714 32.766 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13175,7 +13165,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder"
-			(at 129.54 28.2448 0)
+			(at 128.27 28.2448 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13184,7 +13174,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 125.73 29.21 0)
+			(at 124.46 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13193,7 +13183,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 125.73 29.21 0)
+			(at 124.46 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
