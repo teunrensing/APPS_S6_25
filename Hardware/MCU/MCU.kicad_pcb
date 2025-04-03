@@ -200,8 +200,8 @@
 		(at 100.35 87.58 -90)
 		(descr "USB 2.0 Type C Receptacle, GCT, 16P, top mounted, horizontal, 5A: https://gct.co/files/drawings/usb4105.pdf")
 		(tags "USB C Type-C Receptacle SMD USB 2.0 16P 16C USB4105-15-A USB4105-15-A-060 USB4105-15-A-120 USB4105-GF-A USB4105-GF-A-060 USB4105-GF-A-120")
-		(property "Reference" "J11"
-			(at 0 -5.5 -90)
+		(property "Reference" "USB-C"
+			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.SilkS")
 			(uuid "2e68a2c5-b602-434b-9b3b-638a37c096e5")
@@ -1010,7 +1010,7 @@
 		(at 112.6 81 180)
 		(descr "https://www.mouser.com/ds/2/60/RS-282G05A-SM_RT-1159762.pdf")
 		(tags "SPST button tactile switch")
-		(property "Reference" "SW2"
+		(property "Reference" "Reset"
 			(at -7.15 0.5 0)
 			(layer "F.SilkS")
 			(uuid "f0a623ad-1d36-45bd-b18e-19170b63d68f")
@@ -1535,7 +1535,7 @@
 		(at 150.5 91.25)
 		(descr "https://www.mouser.com/ds/2/60/RS-282G05A-SM_RT-1159762.pdf")
 		(tags "SPST button tactile switch")
-		(property "Reference" "SW1"
+		(property "Reference" "Boot"
 			(at 5 1.75 0)
 			(layer "F.SilkS")
 			(uuid "fc9109a8-1632-494f-8d81-7f2f079913e6")
@@ -1961,8 +1961,8 @@
 		(at 116.85 107.58)
 		(descr "1778609")
 		(tags "Connector")
-		(property "Reference" "J2"
-			(at 1 -6.5 0)
+		(property "Reference" "SPI1"
+			(at -0.1 -4.58 0)
 			(layer "F.SilkS")
 			(uuid "29a7904f-8fc4-4510-a3f5-92f7e52b5954")
 			(effects
@@ -2352,7 +2352,7 @@
 		(at 101.85 70.33 -90)
 		(descr "1814951-7")
 		(tags "Connector")
-		(property "Reference" "J8"
+		(property "Reference" "I2C1"
 			(at -12.58 -3.65 0)
 			(layer "F.SilkS")
 			(uuid "ea2a053e-5908-40a5-8f1e-060805cb16de")
@@ -3012,8 +3012,8 @@
 		(at 140.1 99.58 -90)
 		(descr "1778612")
 		(tags "Connector")
-		(property "Reference" "J5"
-			(at 0 0 -90)
+		(property "Reference" "GPIO0"
+			(at -3.83 -0.15 0)
 			(layer "F.SilkS")
 			(uuid "f48cda45-539d-4f6e-ad52-f4ac0f7e6e72")
 			(effects
@@ -3414,8 +3414,8 @@
 		(at 116.85 115.83)
 		(descr "1778609")
 		(tags "Connector")
-		(property "Reference" "J3"
-			(at 1 -6.5 0)
+		(property "Reference" "SPI2"
+			(at -0.1 -4.08 0)
 			(layer "F.SilkS")
 			(uuid "9e259446-86c0-4ea3-9381-f243b3d4223a")
 			(effects
@@ -3805,8 +3805,8 @@
 		(at 167.35 99.58 -90)
 		(descr "1778612")
 		(tags "Connector")
-		(property "Reference" "J7"
-			(at 0 0 -90)
+		(property "Reference" "GPIO3"
+			(at -3.83 -0.15 0)
 			(layer "F.SilkS")
 			(uuid "dfe93b7d-ea28-4c2f-9835-e44516bbf7fd")
 			(effects
@@ -4707,8 +4707,8 @@
 		(at 158.266666 99.58 -90)
 		(descr "1778612")
 		(tags "Connector")
-		(property "Reference" "J6"
-			(at 0 0 -90)
+		(property "Reference" "GPIO2"
+			(at -3.83 0.266666 0)
 			(layer "F.SilkS")
 			(uuid "1b198491-ec6d-490e-ad37-1e1b8438d689")
 			(effects
@@ -7031,7 +7031,7 @@
 		(at 161.925 80.59 90)
 		(descr "1814948")
 		(tags "Connector")
-		(property "Reference" "J10"
+		(property "Reference" "I2S"
 			(at 11.09 -0.425 180)
 			(layer "F.SilkS")
 			(uuid "f39c3e37-7619-4761-b321-b49c01511e0b")
@@ -7985,7 +7985,7 @@
 		(at 105.4375 103.9925 -90)
 		(descr "1814948")
 		(tags "Connector")
-		(property "Reference" "J9"
+		(property "Reference" "I2C0"
 			(at 11.2575 -0.0625 180)
 			(layer "F.SilkS")
 			(uuid "6053215b-ad04-491d-a948-b8590df0c7a0")
@@ -8939,8 +8939,8 @@
 		(at 116.85 99.33)
 		(descr "1778609")
 		(tags "Connector")
-		(property "Reference" "J1"
-			(at 1 -6.5 0)
+		(property "Reference" "SPI0"
+			(at -0.1 -3.58 0)
 			(layer "F.SilkS")
 			(uuid "bf9761e0-b978-40c0-8485-e2c499923cc2")
 			(effects
@@ -9330,8 +9330,8 @@
 		(at 149.183333 99.58 -90)
 		(descr "1778612")
 		(tags "Connector")
-		(property "Reference" "J4"
-			(at 0 0 -90)
+		(property "Reference" "GPIO1"
+			(at -3.83 0.183333 0)
 			(layer "F.SilkS")
 			(uuid "554b83ac-162c-4365-adc8-942cfb33f643")
 			(effects
