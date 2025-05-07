@@ -5011,6 +5011,26 @@
 		)
 		(uuid 1eb17d55-90ee-4c13-804d-922d9c8287c5)
 	)
+	(text "1.0\n\n"
+		(exclude_from_sim no)
+		(at 270.764 194.564 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "03f12359-2623-4cad-b089-437239e2917c")
+	)
+	(text "MCU PCB\n"
+		(exclude_from_sim no)
+		(at 192.278 189.738 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "052a7d60-5931-4d46-8556-841fc1d400ad")
+	)
 	(text "GPIO headers"
 		(exclude_from_sim no)
 		(at 158.496 102.108 0)
@@ -5030,6 +5050,16 @@
 			)
 		)
 		(uuid "2ef4bd0d-1916-4aeb-89c9-beb955a28de6")
+	)
+	(text "3-4-2025\n"
+		(exclude_from_sim no)
+		(at 212.09 193.548 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "46e41cc5-23de-43ff-bfe0-dd9fff035ef5")
 	)
 	(text "USB-C\n"
 		(exclude_from_sim no)
