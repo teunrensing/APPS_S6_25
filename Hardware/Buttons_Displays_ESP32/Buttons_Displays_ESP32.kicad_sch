@@ -3310,6 +3310,10 @@
 		(uuid "2048df6a-64dd-4eb2-8201-e479f2a8a0a6")
 	)
 	(no_connect
+		(at 88.9 72.39)
+		(uuid "a0cda81a-61e3-4b1b-9e89-746e6c0abf9e")
+	)
+	(no_connect
 		(at 119.38 54.61)
 		(uuid "a27ec83b-6192-42e2-9ee3-81b1985a1b1e")
 	)
@@ -5528,7 +5532,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "13d02b71-d0f8-4f8e-a5d8-1493a2c2a76d")
 		(property "Reference" "U1"
 			(at 106.3341 44.45 0)
