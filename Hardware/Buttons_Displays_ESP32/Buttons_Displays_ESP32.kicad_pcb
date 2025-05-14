@@ -5739,17 +5739,6 @@
 			(layer "F.Fab")
 			(uuid "9e4759f9-9b95-46a9-9b88-d1f82e5daa1d")
 		)
-		(fp_text user "KEEP-OUT ZONE"
-			(at 0 -18.92 0)
-			(layer "Cmts.User")
-			(uuid "430b88cc-b9f9-46fd-956d-64a8cfe40e0d")
-			(effects
-				(font
-					(size 2 2)
-					(thickness 0.15)
-				)
-			)
-		)
 		(fp_text user "Antenna"
 			(at -0.05 -9.44 0)
 			(layer "Cmts.User")
