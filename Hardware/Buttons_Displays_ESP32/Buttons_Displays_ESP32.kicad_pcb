@@ -1409,7 +1409,7 @@
 		(descr "1814948")
 		(tags "Connector")
 		(property "Reference" "J5"
-			(at -11.05 6.925 180)
+			(at -11.05 6.925 360)
 			(layer "F.SilkS")
 			(uuid "7ce0e19b-5e9b-4da7-bfd2-d6cc6c380e76")
 			(effects
@@ -1705,7 +1705,7 @@
 			(layers "F.Cu" "F.Paste" "F.Mask")
 			(uuid "c6c9a294-06c7-4a86-8d8a-e5a822bcfb19")
 		)
-		(model "D:/footprints/phoenix_pt/models/1814948.stp"
+		(model "C:/Users/caspe/Downloads/phoenix_pt/models/1814948.stp"
 			(offset
 				(xyz 7.099999798 -8.180000182 0)
 			)
