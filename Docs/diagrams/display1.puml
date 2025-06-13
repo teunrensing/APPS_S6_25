@@ -1,0 +1,61 @@
+@startuml Interface 
+
+[*] --> Scherm1 : Start
+
+state Scherm1 {
+}
+note right of Scherm1
+  - Toont tijd
+  - Batterijstatus
+end note
+
+state Scherm2 {
+}
+note right of Scherm2
+  - Slaap en wakker wekker instellen
+  - Aan/uit zetten
+  - Batterijstatus
+end note
+
+state Scherm3 {
+}
+note right of Scherm3
+  - Pillenwekkers instellen
+  - Pillenwekkers aan en uit zetten
+  - Batterijstatus
+end note
+
+state Scherm4 {
+}
+note right of Scherm4
+  - Tijd en volumeniveau
+  - Batterijstatus
+  - volume aanpassen
+  - spraaktraining aan en uit zetten
+end note
+
+state Scherm5 {
+}
+note right of Scherm5
+  - Spraaktraining
+  - Batterijstatus
+  - spraak training stoppen en starten
+end note
+
+state Scherm6 {
+}
+note right of Scherm6
+  - Tijden aanpassen
+  - Voor slaap-/pillenwekker
+  - Batterijstatus
+end note
+
+Scherm1 --> Scherm2 : naar slaap en wakker
+Scherm1 --> Scherm3 : naar pillenwekker
+Scherm1 --> Scherm4 : naar volumeweergave
+
+Scherm2 --> Scherm6 : naar instellingen
+Scherm3 --> Scherm6 : naar instellingen
+Scherm4 --> Scherm5 : naar spraaktraining
+
+@enduml
