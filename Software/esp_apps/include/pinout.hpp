@@ -25,5 +25,5 @@
 // #define MIC_WS     41//34;
 // #define MIC_DATA   42//35;
 
-//#define MP3_RX      = 36;
-//#define MP3_TX      = 37;
+#define MP3_RX      = 36;
+#define MP3_TX      = 37;
