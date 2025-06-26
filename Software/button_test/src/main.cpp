@@ -1,42 +1,20 @@
+#include <Arduino.h>
+#include <Wire.h>
 #include "SPI.h"
 #include <Adafruit_GFX.h>
 #include <Adafruit_ST7735.h> // Hardware-specific library for ST7735
-#include "bitMap.h"
- 
-#define TFT_SCLK        12
- 
-#define TFT_CS1          41
-#define TFT_RST1         47// Or set to -1 and connect to Arduino RESET pin
-#define TFT_DC1          14          
-#define TFT_MOSI1        37
- 
-#define button1          42
-#define fibr1            18
- 
-#define TFT_CS2          7
-#define TFT_RST2         48// Or set to -1 and connect to Arduino RESET pin
-#define TFT_DC2          15          
-#define TFT_MOSI2        38
- 
-#define button2          8
-#define fibr2            13
- 
-#define TFT_CS3          1
-#define TFT_RST3         45// Or set to -1 and connect to Arduino RESET pin
-#define TFT_DC3          9          
-#define TFT_MOSI3        35
- 
-#define button3          2
-#define fibr3            21
- 
-#define TFT_CS4          3
-#define TFT_RST4         46// Or set to -1 and connect to Arduino RESET pin
-#define TFT_DC4          10          
-#define TFT_MOSI4        36
- 
-#define button4          40
-#define fibr4            17
- 
+#include "bitmap.h"
+#include "display_icons.h"
+#include "pinout.h"
+
+volatile uint8_t button_state = 0;
+volatile bool data_requested = false;
+bool received = 0;
+
+Display_Icon display1Icon = Display_Icon::Blank;
+Display_Icon display2Icon = Display_Icon::Blank;
+Display_Icon display3Icon = Display_Icon::Blank;
+Display_Icon display4Icon = Display_Icon::Blank;
  
 Adafruit_ST7735 tft1 = Adafruit_ST7735(TFT_CS1, TFT_DC1, TFT_MOSI1, TFT_SCLK, TFT_RST1);
 Adafruit_ST7735 tft2 = Adafruit_ST7735(TFT_CS2, TFT_DC2, TFT_MOSI2, TFT_SCLK, TFT_RST2);
@@ -44,8 +22,33 @@ Adafruit_ST7735 tft3 = Adafruit_ST7735(TFT_CS3, TFT_DC3, TFT_MOSI3, TFT_SCLK, TF
 Adafruit_ST7735 tft4 = Adafruit_ST7735(TFT_CS4, TFT_DC4, TFT_MOSI4, TFT_SCLK, TFT_RST4);
  
 void UIT();
+void writeTextToDisplay(Adafruit_ST7735& display, const char* text);
+void drawIconToDisplay(Adafruit_ST7735& display, const unsigned char* bitMap);
+void writeDisplays();
+void writeDisplay(Adafruit_ST7735 display, Display_Icon icon);
+
+void onRequest() {
+  Wire.write(button_state);
+  button_state = 0; // Reset after sending
+}
+
+void onReceive(int len) {
+  if (len >= 4) {
+    received = true;
+    display1Icon = (Display_Icon)Wire.read();
+    display2Icon = (Display_Icon)Wire.read();
+    display3Icon = (Display_Icon)Wire.read();
+    display4Icon = (Display_Icon)Wire.read();
+  }
+}
+
+
  
 void setup() {
+  Serial.begin(115200);
+  Wire.begin(0x08,5, 4, 0); 
+  Wire.onRequest(onRequest);
+  Wire.onReceive(onReceive);
   // put your setup code here, to run once:
   tft1.initR(INITR_GREENTAB);
   tft2.initR(INITR_GREENTAB);
@@ -54,10 +57,11 @@ void setup() {
   tft1.fillScreen(ST7735_BLACK);
   tft2.fillScreen(ST7735_BLACK);
   tft3.fillScreen(ST7735_BLACK);
-  tft1.drawBitmap(0, 0, sleepAlarm, 128, 128, ST7735_WHITE);
-  tft2.drawBitmap(0, 0, medicineAlarm, 128, 128, ST7735_WHITE);
-  tft3.drawBitmap(0, 0, spraakTrainer, 128, 128, ST7735_WHITE);
-  UIT();
+  tft4.fillScreen(ST7735_BLACK);
+  tft1.setRotation(3);
+  tft2.setRotation(3);
+  tft3.setRotation(1);
+  tft4.setRotation(1);
   pinMode(fibr1, OUTPUT);
   pinMode(fibr2, OUTPUT);
   pinMode(fibr3, OUTPUT);
@@ -67,58 +71,135 @@ void setup() {
   pinMode(button3, INPUT_PULLUP);
   pinMode(button4, INPUT_PULLUP);
   Serial.begin(9600);
-  Serial.println("hI");
 }
  
 void loop() {
-  // put your main code here, to run repeatedly:
- 
+if (received){
+  received = 0;
+  writeDisplays();
+}
+
+  if (digitalRead(button1) == LOW) button_state = 1;
+  else if (digitalRead(button2) == LOW) button_state = 2;
+  else if (digitalRead(button3) == LOW) button_state = 3;
+  else if (digitalRead(button4) == LOW) button_state = 4;
+  delay(50); // debounce
+}
+
+void writeDisplays(){
+  writeDisplay(tft1, display1Icon);
+  writeDisplay(tft2, display2Icon);
+  writeDisplay(tft3, display3Icon);
+  writeDisplay(tft4, display4Icon);
+}
+
+void writeDisplay(Adafruit_ST7735 display, Display_Icon icon){
+switch (icon) {
+    case Display_Icon::Blank:
+        display.fillScreen(ST7735_WHITE);
+        break;
+    case Display_Icon::Digit0:
+        writeTextToDisplay(display, "0");
+        break;
+    case Display_Icon::Digit1:
+        writeTextToDisplay(display, "1");
+        break;
+    case Display_Icon::Digit2:
+        writeTextToDisplay(display, "2");
+        break;
+    case Display_Icon::Digit3:
+        writeTextToDisplay(display, "3");
+        break;
+    case Display_Icon::Digit4:
+        writeTextToDisplay(display, "4");
+        break;
+    case Display_Icon::Digit5:
+        writeTextToDisplay(display, "5");
+        break;
+    case Display_Icon::Digit6:
+        writeTextToDisplay(display, "6");
+        break;
+    case Display_Icon::Digit7:
+        writeTextToDisplay(display, "7");
+        break;
+    case Display_Icon::Digit8:
+        writeTextToDisplay(display, "8");
+        break;
+    case Display_Icon::Digit9:
+        writeTextToDisplay(display, "9");
+        break;
+    case Display_Icon::Off:
+        writeTextToDisplay(display, "Off");
+        break;
+    case Display_Icon::On:
+        writeTextToDisplay(display, "On");
+        break;
+    case Display_Icon::Edit:
+        writeTextToDisplay(display, "Edit");
+        break;
+    case Display_Icon::Start:
+        writeTextToDisplay(display, "Start");
+        break;
+    case Display_Icon::Stop:
+        writeTextToDisplay(display, "Stop");
+        break;
+    case Display_Icon::Increase:
+        writeTextToDisplay(display, "+");
+        break;
+    case Display_Icon::Decrease:
+        writeTextToDisplay(display, "-");
+        break;
+
+    case Display_Icon::Confirm:
+        drawIconToDisplay(display, iconConfirm);
+        break;
+    case Display_Icon::Retry:
+        drawIconToDisplay(display, iconRetry);
+        break;
+    case Display_Icon::Next:
+        drawIconToDisplay(display, iconNext);
+        break;
+    case Display_Icon::Back:
+        drawIconToDisplay(display, iconBack);
+        break;
+    case Display_Icon::Play:
+        drawIconToDisplay(display, iconPlay);
+        break;
+    case Display_Icon::Pause:
+        drawIconToDisplay(display, iconPause);
+        break;
+    case Display_Icon::VolumeUp:
+        drawIconToDisplay(display, iconVolumeUp);
+        break;
+    case Display_Icon::VolumeDown:
+        drawIconToDisplay(display, iconVolumeDown);
+        break;
+    case Display_Icon::PillAlarm:
+        drawIconToDisplay(display, iconPillAlarm);
+        break;
+    case Display_Icon::SleepAlarm:
+        drawIconToDisplay(display, iconSleepAlarm);
+        break;
+    case Display_Icon::SpeechTrainer:
+        drawIconToDisplay(display, iconSpeechTrainer);
+        break;
+      
+    default:
+        // Optioneel: iets doen als het geen cijfer is
+        break;
+}
+}
+
+void drawIconToDisplay(Adafruit_ST7735& display, const unsigned char* bitMap){
+  
+  display.drawBitmap(0,0,bitMap,128,128,ST77XX_WHITE);
+}
+
+void writeTextToDisplay(Adafruit_ST7735& display, const char* text) {
+  display.fillScreen(ST7735_WHITE);
+  display.setCursor(8, 48);
+  display.setTextColor(ST77XX_BLACK);  
+  display.setTextSize(5);
+  display.println(text);
 }
  
- 
-void UIT() {
-  tft2.fillScreen(ST7735_WHITE);
-  tft2.setCursor(8, 48);
-  tft2.setTextColor(ST77XX_BLACK);  
-  tft2.setTextSize(5);
-  tft2.println("UIT");
-}
- 
-
-// #include <Arduino.h>
-// #include <Wire.h>
-
-// volatile uint8_t button_state = 0;
-// volatile bool data_requested = false;
-
-// void onRequest() {
-//   Wire.write(button_state);
-//   button_state = 0; // Reset after sending
-// }
-
-// void onReceive(int len) {
-//   if (len >= 4) {
-//     int value1 = Wire.read() | (Wire.read() << 8);
-//     int value2 = Wire.read() | (Wire.read() << 8);
-//     Serial.printf("Received: %d, %d\n", value1, value2);
-//   }
-// }
-
-// void setup() {
-//   Serial.begin(115200);
-//   Wire.begin(5, 4, 0x08); 
-//   Wire.onRequest(onRequest);
-//   Wire.onReceive(onReceive);
-//   pinMode(1, INPUT_PULLUP);
-//   pinMode(2, INPUT_PULLUP);
-//   pinMode(42, INPUT_PULLUP);
-//   pinMode(41, INPUT_PULLUP);
-// }
-
-// void loop() {
-//   if (digitalRead(1) == LOW) button_state = 1;
-//   else if (digitalRead(2) == LOW) button_state = 2;
-//   else if (digitalRead(42) == LOW) button_state = 3;
-//   else if (digitalRead(41) == LOW) button_state = 4;
-//   delay(50); // debounce
-// }

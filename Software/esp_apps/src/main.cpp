@@ -16,7 +16,8 @@
 void setup()
 {
     Serial.begin(115200);
-    Wire.begin(sda0,scl0); // SDA/SCL default or Wire.begin(sda, scl);
+    Wire.begin(sda0,scl0,0); // SDA/SCL default or Wire.begin(sda, scl);
+
     // Wire.begin(5, 4);
     // //delay(1000);
     // Wire.beginTransmission(PCA6408_ADDR);
