@@ -7,25 +7,26 @@
 #include "display_icons.h"
 #include "pinout.h"
 
+void drawIconToDisplay(Adafruit_ST7735& display, const unsigned char* bitMap);
+void writeTextToDisplay(Adafruit_ST7735& display, const char* text);
+void writeDisplay(Adafruit_ST7735 display, Display_Icon icon);
+void writeDisplays();
+
 volatile uint8_t button_state = 0;
 volatile bool data_requested = false;
-bool received = 0;
+bool received = 1;
+
+SPIClass spiBus(FSPI);
 
 Display_Icon display1Icon = Display_Icon::Blank;
 Display_Icon display2Icon = Display_Icon::Blank;
 Display_Icon display3Icon = Display_Icon::Blank;
 Display_Icon display4Icon = Display_Icon::Blank;
  
-Adafruit_ST7735 tft1 = Adafruit_ST7735(TFT_CS1, TFT_DC1, TFT_MOSI1, TFT_SCLK, TFT_RST1);
-Adafruit_ST7735 tft2 = Adafruit_ST7735(TFT_CS2, TFT_DC2, TFT_MOSI2, TFT_SCLK, TFT_RST2);
-Adafruit_ST7735 tft3 = Adafruit_ST7735(TFT_CS3, TFT_DC3, TFT_MOSI3, TFT_SCLK, TFT_RST3);
-Adafruit_ST7735 tft4 = Adafruit_ST7735(TFT_CS4, TFT_DC4, TFT_MOSI4, TFT_SCLK, TFT_RST4);
- 
-void UIT();
-void writeTextToDisplay(Adafruit_ST7735& display, const char* text);
-void drawIconToDisplay(Adafruit_ST7735& display, const unsigned char* bitMap);
-void writeDisplays();
-void writeDisplay(Adafruit_ST7735 display, Display_Icon icon);
+Adafruit_ST7735 tft1 = Adafruit_ST7735(&spiBus, TFT_CS1, TFT_DC1, TFT_RST1);
+Adafruit_ST7735 tft2 = Adafruit_ST7735(&spiBus, TFT_CS2, TFT_DC2, TFT_RST2);
+Adafruit_ST7735 tft3 = Adafruit_ST7735(&spiBus, TFT_CS3, TFT_DC3, TFT_RST3);
+Adafruit_ST7735 tft4 = Adafruit_ST7735(&spiBus, TFT_CS4, TFT_DC4, TFT_RST4);
 
 void onRequest() {
   Wire.write(button_state);
@@ -42,38 +43,55 @@ void onReceive(int len) {
   }
 }
 
-
  
 void setup() {
-  Serial.begin(115200);
+//   Serial.begin(115200);
+  spiBus.begin(TFT_SCK, -1, TFT_MOSI, -1);
   Wire.begin(0x08,5, 4, 0); 
   Wire.onRequest(onRequest);
   Wire.onReceive(onReceive);
   // put your setup code here, to run once:
-  tft1.initR(INITR_GREENTAB);
-  tft2.initR(INITR_GREENTAB);
-  tft3.initR(INITR_GREENTAB);
-  tft4.initR(INITR_GREENTAB);
+  tft1.initR();
+  tft2.initR();
+  tft3.initR();
+  tft4.initR();
+
+  tft1.setSPISpeed(40000000);
+  tft2.setSPISpeed(40000000);
+  tft3.setSPISpeed(40000000);
+  tft4.setSPISpeed(40000000);
+
   tft1.fillScreen(ST7735_BLACK);
   tft2.fillScreen(ST7735_BLACK);
   tft3.fillScreen(ST7735_BLACK);
   tft4.fillScreen(ST7735_BLACK);
+
   tft1.setRotation(3);
   tft2.setRotation(3);
   tft3.setRotation(1);
   tft4.setRotation(1);
+
   pinMode(fibr1, OUTPUT);
   pinMode(fibr2, OUTPUT);
   pinMode(fibr3, OUTPUT);
   pinMode(fibr4, OUTPUT);
+
   pinMode(button1, INPUT_PULLUP);
   pinMode(button2, INPUT_PULLUP);
   pinMode(button3, INPUT_PULLUP);
   pinMode(button4, INPUT_PULLUP);
-  Serial.begin(9600);
 }
  
 void loop() {
+// for(int i = 0; i<=28; i++){
+//     Display_Icon icon = (Display_Icon)i;
+//     writeDisplay(tft1, icon);
+//     writeDisplay(tft2, icon);
+//     writeDisplay(tft3, icon);
+//     writeDisplay(tft4, icon);
+//     delay(500);
+// }
+
 if (received){
   received = 0;
   writeDisplays();
@@ -191,7 +209,7 @@ switch (icon) {
 }
 
 void drawIconToDisplay(Adafruit_ST7735& display, const unsigned char* bitMap){
-  
+  display.fillScreen(ST7735_BLACK);
   display.drawBitmap(0,0,bitMap,128,128,ST77XX_WHITE);
 }
 
