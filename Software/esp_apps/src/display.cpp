@@ -24,8 +24,15 @@ void my_disp_flush(lv_disp_drv_t *disp, const lv_area_t *area, lv_color_t *color
 void task_check_buttons(void *pvParameters)
 {
 
+  unsigned long last_tick = 0;
   while (1)
   {
+
+    unsigned long now = millis();
+    if (now - last_tick >= 1) {
+      lv_tick_inc(now - last_tick); 
+      last_tick = now;
+    }
     Wire.requestFrom(BUTTON_CONTROLLER_ADDR, 1);
     if (Wire.available())
     {
