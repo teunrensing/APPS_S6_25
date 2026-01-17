@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP MAX17301G+
+D 1-Cell ModelGauge m5 EZ Fuel Gauge with Protector, Internal Self-Discharge Detection and SHA-256 Authentication
+K
+F https://www.analog.com/MAX17301/datasheet
+$ENDCMP
+#
+#End Doc Library
