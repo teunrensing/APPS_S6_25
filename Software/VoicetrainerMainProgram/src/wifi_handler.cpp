@@ -29,8 +29,8 @@ void connectToWiFi()
 
 void disconnectWiFi()
 {
-  WiFi.disconnect(true); // true = vergeet netwerk
-  WiFi.mode(WIFI_OFF);   // schakel Wi-Fi hardware uit
+  WiFi.disconnect(true);
+  WiFi.mode(WIFI_OFF);
   log_message("Wi-Fi is uitgeschakeld en netwerk vergeten");
 }
 

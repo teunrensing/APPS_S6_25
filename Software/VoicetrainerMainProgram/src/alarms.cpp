@@ -115,7 +115,7 @@ void check_alarms()
         else
         {
           change_mode(AppMode::MODE_PILL_ALARM);
-          set_mp3_volume(20);
+          set_mp3_volume(30);
           play_mp3_sound(mp3Sounds::SpeechPillen);
           vTaskDelay(pdMS_TO_TICKS(5000));
           play_mp3_sound(mp3Sounds::AlarmPills);
